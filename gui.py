@@ -1,59 +1,50 @@
 import tkinter as tk
+#from main import conversion
 
 
-#Window Box -----------------------
-window = tk.Tk()
-window.title('Temperature Conversion')
+def gui():
+    #Window Box -----------------------
+    window = tk.Tk()
+    window.title('Temperature Conversion')
 
-window.geometry('500x300')
+    window.geometry('500x300')
 
-#Text BG -----------------------
-window_bg = '#F5EDDC'
-button_bg = '#CFD2CF'
+    #Text BG -----------------------
+    window_bg = '#F5EDDC'
+    button_bg = '#CFD2CF'
 
-#Widget -----------------------
-var = tk.StringVar()
+    #Widget -----------------------
+    #var = tk.StringVar()
+    temperature = tk.StringVar()
 
-# #Functions -----------------------
+    #Buttons -----------------------
+    convert_button = tk.Button(text="Convert", bg=button_bg)
+    convert_button.grid(row=20, column=1)
+    # convert_button.configure(command=conversion())
 
-# def clear_button():
-#     temperature_input.delete(0,tk.END)
-#     return None
-
-# def conversion():
-#    temperature = temperature_input.get()
-#    if drop_down == "Celsius":
-#      f = float((float(temperature) * 9/5) + 32)
-#      result_input.config(text="%f Fahrenheit" % f)
+    clear_button = tk.Button(text="Clear", bg=button_bg,)
+    clear_button.grid(row=50, column=1)
 
 
+    #Dropdown Box -----------------------
 
-#Buttons -----------------------
-convert_button = tk.Button(text="Convert", bg=button_bg)
-convert_button.grid(row=20, column=1)
+    options = ["Celsius", "Fahrenheit"]
 
-clear_button = tk.Button(text="Clear", bg=button_bg)
-clear_button.grid(row=50, column=1)
-
-
-#Dropdown Box -----------------------
-
-options = ["Celsius", "Fahrenheit"]
-
-drop_down = tk.OptionMenu(window, var, *options)
-drop_down.grid(row = 0, column = 2)
+    drop_down = tk.OptionMenu(window, temperature, *options)
+    drop_down.grid(row=0, column=2)
 
 
-#Text Label -----------------------
-temperature_label = tk.Label(text="Enter Temperature", bg=window_bg)
-temperature_label.grid(row = 0, column = 0)
+    #Text Label -----------------------
+    temperature_label = tk.Label(text="Enter Temperature", bg=window_bg)
+    temperature_label.grid(row=0, column=0)
 
 
-#User input -----------------------
-temperature_input = tk.Entry()
-temperature_input.grid(row=0, column=1)
+    #User entry -----------------------
 
-result_input = tk.Entry()
-result_input.grid(row=1, column=1)
+    temperature_entry = tk.Entry()
+    temperature_entry.grid(row=0, column=1)
 
-window.mainloop()
+    result_entry = tk.Entry()
+    result_entry.grid(row=1, column=1)
+
+    window.mainloop()
