@@ -22,6 +22,8 @@ def gui():
         deg = degree.get()
         result_entry.delete(0, tk.END)
         result_entry.insert(0, conversion(temperature, deg))
+        result_label.config(text='Fahrenheit')
+        result_label.config(text='Celsius')
 
     #Buttons -----------------------
     convert_button = tk.Button(text="Convert", bg=button_bg)
@@ -45,7 +47,7 @@ def gui():
     temperature_label = tk.Label(text="Enter Temperature", bg=window_bg)
     temperature_label.grid(row=0, column=0)
 
-    result_label = tk.Label(text="",bg=window_bg)
+    result_label = tk.Label(window,bg=window_bg)
     result_label.grid(row=1, column=2)
 
     #User entry -----------------------
