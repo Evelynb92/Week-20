@@ -1,13 +1,12 @@
-# #Functions -----------------------
-from gui import gui
+def conversion(temperature_entry, degree_selection,result_label):
+    if degree_selection == "Celsius":
+        celsius = float((float(temperature_entry) * 9/5) + 32)
+        result_label.configure(text='Fahrenheit')
+        print('cel')
+        return celsius
+    elif degree_selection == "Fahrenheit":
+        fahrenheit = float((float(temperature_entry) - 32) * 5 / 9)
+        result_label.configure(text='Celsius')
+        return fahrenheit
+        print('fah')
 
-
-#def clear_button(temperature_input):
-    #temperature_input.delete(0,gui.END)
-    #return None
-
-# def conversion():
-#    temperature = temperature_input.get()
-#    if drop_down == "Celsius":
-#      f = float((float(temperature) * 9/5) + 32)
-#      result_input.config(text="%f Fahrenheit" % f)
