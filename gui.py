@@ -1,6 +1,7 @@
 import tkinter as tk
 from functions import conversion
 
+
 def gui():
 
     #Window Box -----------------------
@@ -9,34 +10,41 @@ def gui():
 
     window.geometry('400x200')
 
+    window.config(bg='#CA4E79')
+
+    window.resizable(width=False, height=False)
+
     #Text BG -----------------------
     window_bg = '#FFC18E'
     button_bg = '#FFC18E'
 
-    window.config(bg='#CA4E79')
-
     #Widget -----------------------
     degree = tk.StringVar()
+    degree.set("Select One")
 
+    #Coversion Function -----------------------
     def call_conversion():
         temp = temperature_entry.get()
+        result_entry.delete(0, tk.END)
 
         if temp.isnumeric():
 
             deg = degree.get()
             result_entry.delete(0,tk.END)
-            result_entry.insert(0,conversion(temp, deg))
 
             if deg == "Celsius":
-                    result_label.config(text='<--- Fahrenheit')
+                result_entry.insert(0, conversion(temp, deg))
+                result_label.config(text='<--- Fahrenheit', bg=window_bg)
 
             elif deg == "Fahrenheit":
-                    result_label.config(text='<--- Celsius')
+                result_entry.insert(0, conversion(temp, deg))
+                result_label.config(text='<--- Celsius',bg=window_bg)
+
+            else:
+                result_entry.insert(0,"Missing degree input@")
 
         else:
-            result_entry.insert(tk.END,"Invaild Characters")
-
-
+            result_entry.insert(0,"Invaild Characters!")
 
 
     #Buttons -----------------------
@@ -67,8 +75,9 @@ def gui():
     output_label = tk.Label(text="Results", bg=window_bg)
     output_label.grid(row=1, column=0)
 
-    result_label = tk.Label(text="",bg=window_bg)
+    result_label = tk.Label(bg='#CA4E79')
     result_label.grid(row=1, column=3)
+
 
     #User entry -----------------------
     temperature_entry = tk.Entry()
